@@ -7,6 +7,8 @@ My project is a memory game that will reinforce vocabulary for students.  The in
 
 I will start with a one-player version with a goal of adding a two-player version as well.
 
+![alt text](Screenshot 2016-01-28 12.52.31.png "Memory Game Mockup")
+
 
 ##Technology
 
@@ -21,6 +23,9 @@ Students will enter a username into a form.  They will choose an icon to represe
 ##Game Play
 For each new game, the cards will be dynamically added to the DOM in a random arragement.  When a student clicks on two cards in a row that match, the pair of cards will disappear and they will earn a point.  Play continues until all cards have disappeared.
 
+##Selecting Cards
+For the one-player version, the player can use a mouse/trackpad to navigate and choose a card by clicking on it.  For the two-player version, each player will use assigned hot keys to move across the cards.
+
 ##Score
 When a matching pair of cards disappear, a point will be added to a score that is displayed under a player's username and icon.
 
@@ -31,6 +36,10 @@ When the game is over, a message will appear declaring the winner.  The message 
 ##Stretch Goals
 Two-player version
 Choice of vocabulary with multiple sets available
+
+
+##Pivotal Tracker
+https://www.pivotaltracker.com/n/projects/1522173
 
 
 
