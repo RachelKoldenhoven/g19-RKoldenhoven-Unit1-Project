@@ -1,1 +1,9 @@
 /* add custom styles */
+.icon {
+  width: 50px;
+  height: 50px;
+}
+
+.highlighted {
+  box-shadow: 5px 5px 5px #06FF28;
+}
