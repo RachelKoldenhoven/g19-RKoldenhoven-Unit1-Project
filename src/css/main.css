@@ -7,3 +7,7 @@
 .highlighted {
   box-shadow: 5px 5px 5px #06FF28;
 }
+
+.panel-title-p1, .panel-title-p2{
+  color: white;
+}

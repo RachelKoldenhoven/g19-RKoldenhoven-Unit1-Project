@@ -3,30 +3,58 @@
 $(document).on('ready', function() {
   console.log('sanity please!');
 
+//////////////associate player with their stuff/////////
+  var p1 = {
+    label: "p1",
+    btn: $('#p1btn'),
+    name: $('#p1Name'),
+    panel: $('.panel-title-p1'),
+    input: $('.p1-input'),
+    icon: $('#p1icon')
+  };
+
+  var p2 = {
+    label: "p2",
+    btn: $('#p2btn'),
+    name: $('#p2Name'),
+    panel: $('.panel-title-p2'),
+    input: $('.p2-input'),
+    icon: $('#p2icon')
+  };
+
 //////////////append player names//////////
 
-$('#p1btn').on('click', function(e) {
-  e.preventDefault();
-  var player1Name = $('#p1Name').val();
-  console.log(player1Name);
-  $('.panel-title-p1').append(player1Name);
-  $('.p1-input').hide();
-});
+var state = {
+  player: undefined
+};
 
-$('#p2btn').on('click', function(e) {
-  e.preventDefault();
-  var player2Name = $('#p2Name').val();
-  console.log(player2Name);
-  $('.panel-title-p2').append(player2Name);
-  $('.p2-input').hide();
-});
+var init = function(player) {
 
+  player.btn.on('click', function(e) {
+    e.preventDefault();
+    var playerName = player.name.val();
+    player.panel.append(playerName);
+    player.input.hide();
+    state.player = player;
+  });
+    return state.player;
+};
+
+init(p1);
+init(p2);
+
+///////////////////players choose icons////////
 
 $('.icon').on('click', function() {
-  console.log("icon clicked");
   $('.highlighted').removeClass('highlighted')
   $(this).addClass('highlighted');
-})
+});
+
+$('#icon-choice').on('click', function() {
+
+  $(state.player.icon).append($('.highlighted'));
+  $('.highlighted').removeClass('highlighted');
+});
 /////////////append card divs to game space/////
 for (var i = 0; i < 10; i++) {
   var cardDiv = $(document.createElement("div"));
