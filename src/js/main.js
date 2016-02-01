@@ -69,20 +69,28 @@ $.getJSON("../genetics/vocab.json", function(data) {
   });
   var termsAndDefinitions = terms.concat(definitions);
 
-  var definitions = data.genetics.slice();
   for (var i = 0; i < 6; i++) {
     cards.push([]);
+    var rowID = i;
+    var row = $("<div class= 'row' id= '"+rowID+"'></div>");
+
     for (var j = 0; j <5; j++) {
       var randomItemIndex = Math.floor(Math.random()*termsAndDefinitions.length);
       var randomItem = termsAndDefinitions.splice(randomItemIndex, 1);
       cards[i].push(randomItem[0]);
+      var div = $("<div class='col-md-2 game-space'></div>");
+      var imgURL = randomItem[0].image;
+      div.append(randomItem[0].term || randomItem[0].definition + "<img src='"+imgURL+"'>");
+      row.append(div);
     };
+    $('main').append(row);
   };
   console.log(cards);
+  console.log(cards[0][0].id);
+
 });
 
 
-//////////////create rows and column arrays//////////
 
 
 

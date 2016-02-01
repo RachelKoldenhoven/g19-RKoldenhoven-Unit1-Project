@@ -11,3 +11,17 @@
 .panel-title-p1, .panel-title-p2{
   color: white;
 }
+
+main {
+  margin-left: 5%;
+}
+
+.game-space {
+  border: 1px solid #033c73;
+  border-radius: 5%;
+}
+
+img {
+  width: 150px;
+  height: auto;
+}
