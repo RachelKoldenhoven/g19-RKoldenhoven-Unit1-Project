@@ -60,6 +60,8 @@ $('#icon-choice').on('click', function() {
 //////////////get json data////////////////
 
 var cards =[];
+/////get data from json file and return objects that have either the term,
+/////or the definition and picture.  Then concat them into one array.
 $.getJSON("../genetics/vocab.json", function(data) {
   var terms = data.genetics.map(function(vocabEntry, idx){
     return {term: vocabEntry.term, id: idx}
@@ -69,6 +71,8 @@ $.getJSON("../genetics/vocab.json", function(data) {
   });
   var termsAndDefinitions = terms.concat(definitions);
 
+////////create six rows of five divs each and add a random item from the array to each new div
+////////append divs to DOM
   for (var i = 0; i < 6; i++) {
     cards.push([]);
     var rowID = i;
@@ -78,15 +82,28 @@ $.getJSON("../genetics/vocab.json", function(data) {
       var randomItemIndex = Math.floor(Math.random()*termsAndDefinitions.length);
       var randomItem = termsAndDefinitions.splice(randomItemIndex, 1);
       cards[i].push(randomItem[0]);
-      var div = $("<div class='col-md-2 game-space'></div>");
+      var container = $("<div class='col-md-2 container'></div>");
+      var div = $("<div class='game-space'></div>");
       var imgURL = randomItem[0].image;
       div.append(randomItem[0].term || randomItem[0].definition + "<img src='"+imgURL+"'>");
-      row.append(div);
+      container.append(div);
+      row.append(container);
     };
     $('main').append(row);
   };
-  console.log(cards);
-  console.log(cards[0][0].id);
+  var cardFront = $("<div class='card-front'></div>");
+  cardFront.append("<img src='../genetics/img/Genetic.jpeg'>");
+  $('.container').append(cardFront);
+
+//////////////////////event handler for flipping cards/////////
+
+  $('.container').on('click', function() {
+    console.log('clicked');
+    $(this).find('.game-space').css('z-index', '1');
+    $(this).find('.card-front').css('z-index', '-1');
+  });
+
+
 
 });
 

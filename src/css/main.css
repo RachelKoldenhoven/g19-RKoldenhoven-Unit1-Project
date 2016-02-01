@@ -16,12 +16,44 @@ main {
   margin-left: 5%;
 }
 
+.container {
+  position: relative;
+  padding: 0;
+}
+
+.row{
+  position: relative;
+}
+
 .game-space {
   border: 1px solid #033c73;
   border-radius: 5%;
+  height: 270px;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  font-size: 16px;
+  z-index: -1;
+}
+
+.card-front {
+  border: 1px solid #033c73;
+  border-radius: 5%;
+  height: 270px;
+  width: 100%;
+  background-color: white;
+}
+
+.card-front img {
+  width: 100%;
+  padding-top: 10%;
 }
 
 img {
-  width: 150px;
+  width: 125px;
   height: auto;
 }
+
