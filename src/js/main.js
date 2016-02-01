@@ -1,5 +1,6 @@
 // add scripts
 
+
 $(document).on('ready', function() {
   console.log('sanity please!');
 
@@ -55,25 +56,38 @@ $('#icon-choice').on('click', function() {
   $(state.player.icon).append($('.highlighted'));
   $('.highlighted').removeClass('highlighted');
 });
-/////////////append card divs to game space/////
-for (var i = 0; i < 10; i++) {
-  var cardDiv = $(document.createElement("div"));
-  cardDiv.addClass("dna");
-  $('.game-space').append(cardDiv);
-  $('.dna').css({"background-image":"url('..//img/card_back.jpg')", "width":"50%", "height":"50%"});
-  // var newDiv = $(document.createElement("div"));
-  // newDiv.css({'background-color':'blue', 'width':'20px','height':'20px'});
+/////////////create card data in random arrangement/////
+//////////////get json data////////////////
 
-};
+var cards =[];
+$.getJSON("../genetics/vocab.json", function(data) {
+  var terms = data.genetics.map(function(vocabEntry, idx){
+    return {term: vocabEntry.term, id: idx}
+  });
+  var definitions = data.genetics.map(function(vocabEntry, idx) {
+    return {definition: vocabEntry.definition, image: vocabEntry.image, id: idx}
+  });
+  var termsAndDefinitions = terms.concat(definitions);
 
-// images.forEach(function(img, i) {
-//   var imgURI = img;
-//   console.log(imgURI);
-//   var imgName = "image-" + (i+1);
-//  var imgDiv = "<div class= "+imgName+"></div>"
-//   $(".carousel-images").append(imgDiv);
-//   $("."+imgName).css("background-image", "url("+imgURI+")");
-// })
+  var definitions = data.genetics.slice();
+  for (var i = 0; i < 6; i++) {
+    cards.push([]);
+    for (var j = 0; j <5; j++) {
+      var randomItemIndex = Math.floor(Math.random()*termsAndDefinitions.length);
+      var randomItem = termsAndDefinitions.splice(randomItemIndex, 1);
+      cards[i].push(randomItem[0]);
+    };
+  };
+  console.log(cards);
+});
+
+
+//////////////create rows and column arrays//////////
+
+
+
+
+
 
 
 
