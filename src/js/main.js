@@ -11,7 +11,8 @@ $(document).on('ready', function() {
     name: $('#p1Name'),
     panel: $('.panel-title-p1'),
     input: $('.p1-input'),
-    icon: $('#p1icon')
+    icon: $('#p1icon'),
+    score: $('#p1Points')
   };
 
   var p2 = {
@@ -20,7 +21,8 @@ $(document).on('ready', function() {
     name: $('#p2Name'),
     panel: $('.panel-title-p2'),
     input: $('.p2-input'),
-    icon: $('#p2icon')
+    icon: $('#p2icon'),
+    score: $('#p2Points')
   };
 
 //////////////append player names//////////
@@ -38,11 +40,11 @@ var init = function(player) {
     player.input.hide();
     state.player = player;
   });
-    return state.player;
 };
 
 init(p1);
 init(p2);
+
 
 ///////////////////players choose icons////////
 
@@ -106,21 +108,19 @@ $.getJSON("../genetics/vocab.json", function(data) {
     if(lastCard === undefined) {
       lastCard = $(this);
     } else if (lastCard.attr("data-id") === $(this).attr("data-id")) {
-      console.log("match");
-      lastCard.addClass("matched");
-      $(this).addClass("matched");
+      lastCard.animate({opacity: "0.0"}, 'slow');
+      $(this).animate({opacity: "0.0"}, 'slow');
       lastCard = undefined;
     } else {
-      console.log("no match");
       lastCard = undefined;
     }
 
     $(this).addClass("selected");
     cardCount += 1;
       if(cardCount >=2) {
-        cardCount = 0;
         setTimeout(function() {
         $('.container').removeClass("selected");
+        cardCount = 0;
       }, 3000);
 
       }
