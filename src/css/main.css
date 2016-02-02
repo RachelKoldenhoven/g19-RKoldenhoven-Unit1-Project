@@ -57,3 +57,21 @@ img {
   height: auto;
 }
 
+.selected > .game-space {
+  z-index: 1;
+}
+
+.selected > .card-front {
+  z-index: -1;
+}
+
+.matched {
+  visibility: hidden;
+}
+
+
+
+
+
+
+

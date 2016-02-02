@@ -80,14 +80,15 @@ $.getJSON("../genetics/vocab.json", function(data) {
 
     for (var j = 0; j <5; j++) {
       var randomItemIndex = Math.floor(Math.random()*termsAndDefinitions.length);
-      var randomItem = termsAndDefinitions.splice(randomItemIndex, 1);
-      cards[i].push(randomItem[0]);
+      var randomItem = termsAndDefinitions.splice(randomItemIndex, 1)[0];
+      cards[i].push(randomItem);
       var container = $("<div class='col-md-2 container'></div>");
       var div = $("<div class='game-space'></div>");
-      var imgURL = randomItem[0].image;
-      div.append(randomItem[0].term || randomItem[0].definition + "<img src='"+imgURL+"'>");
+      var imgURL = randomItem.image;
+      div.append(randomItem.term || randomItem.definition + "<img src='"+imgURL+"'>");
       container.append(div);
       row.append(container);
+      container.attr("data-id", randomItem.id);
     };
     $('main').append(row);
   };
@@ -96,11 +97,33 @@ $.getJSON("../genetics/vocab.json", function(data) {
   $('.container').append(cardFront);
 
 //////////////////////event handler for flipping cards/////////
-
+  var cardCount = 0;
+  var lastCard;
   $('.container').on('click', function() {
-    console.log('clicked');
-    $(this).find('.game-space').css('z-index', '1');
-    $(this).find('.card-front').css('z-index', '-1');
+    if($(this).hasClass("selected")) {
+      return;
+    }
+    if(lastCard === undefined) {
+      lastCard = $(this);
+    } else if (lastCard.attr("data-id") === $(this).attr("data-id")) {
+      console.log("match");
+      lastCard.addClass("matched");
+      $(this).addClass("matched");
+      lastCard = undefined;
+    } else {
+      console.log("no match");
+      lastCard = undefined;
+    }
+
+    $(this).addClass("selected");
+    cardCount += 1;
+      if(cardCount >=2) {
+        cardCount = 0;
+        setTimeout(function() {
+        $('.container').removeClass("selected");
+      }, 3000);
+
+      }
   });
 
 
