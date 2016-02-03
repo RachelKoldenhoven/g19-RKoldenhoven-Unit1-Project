@@ -12,7 +12,8 @@ $(document).on('ready', function() {
     panel: $('.panel-title-p1'),
     input: $('.p1-input'),
     icon: $('#p1icon'),
-    score: $('#p1Points')
+    score: $('#p1Points'),
+    points: 0
   };
 
   var p2 = {
@@ -22,7 +23,8 @@ $(document).on('ready', function() {
     panel: $('.panel-title-p2'),
     input: $('.p2-input'),
     icon: $('#p2icon'),
-    score: $('#p2Points')
+    score: $('#p2Points'),
+    points: 0
   };
 
 //////////////append player names//////////
@@ -45,7 +47,7 @@ var init = function(player) {
 init(p1);
 init(p2);
 
-
+console.log(state.player);
 ///////////////////players choose icons////////
 
 $('.icon').on('click', function() {
@@ -58,6 +60,27 @@ $('#icon-choice').on('click', function() {
   $(state.player.icon).append($('.highlighted'));
   $('.highlighted').removeClass('highlighted');
 });
+
+//////////////start the game//////////////
+
+  $('#startBtn').on('click', function() {
+    setPlayer(p1);
+  });
+
+///////////////change player///////////////
+
+  function setPlayer(player) {
+    (state.player.icon).removeClass('highlighted');
+    state.player = player;
+    (state.player.icon).addClass('highlighted');
+  }
+
+  ////////////////increment score//////////////
+  function incrementScore() {
+    state.player.points += 1;
+    state.player.score.text('Points: ' + state.player.points);
+  }
+
 /////////////create card data in random arrangement/////
 //////////////get json data////////////////
 
@@ -103,6 +126,9 @@ $.getJSON("../genetics/vocab.json", function(data) {
   var lastCard;
   $('.container').on('click', function() {
     //exit to prevent badness
+    if(state.player === undefined) {
+      return;
+    }
     if(cardCount >= 2) {
       return;
     }
@@ -117,8 +143,11 @@ $.getJSON("../genetics/vocab.json", function(data) {
       lastCard.animate({opacity: "0.0"}, 'slow');
       $(this).animate({opacity: "0.0"}, 'slow');
       lastCard = undefined;
+      incrementScore();
     } else {
       lastCard = undefined;
+      var newPlayer = (state.player === p1) ? p2 : p1;
+      setPlayer(newPlayer);
     }
 
     //turns cards back over
