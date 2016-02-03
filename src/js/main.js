@@ -103,12 +103,12 @@ $.getJSON("../genetics/vocab.json", function(data) {
 
 ////////create six rows of five divs each and add a random item from the array to each new div
 ////////append divs to DOM
-  for (var i = 0; i < 6; i++) {
+  for (var i = 0; i < 5; i++) {
     cards.push([]);
     var rowID = i;
     var row = $("<div class= 'row' id= '"+rowID+"'></div>");
 
-    for (var j = 0; j <5; j++) {
+    for (var j = 0; j <6; j++) {
       var randomItemIndex = Math.floor(Math.random()*termsAndDefinitions.length);
       var randomItem = termsAndDefinitions.splice(randomItemIndex, 1)[0];
       cards[i].push(randomItem);
