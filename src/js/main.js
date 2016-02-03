@@ -79,7 +79,12 @@ $('#icon-choice').on('click', function() {
   function incrementScore() {
     state.player.points += 1;
     state.player.score.text('Points: ' + state.player.points);
+    var totalScore = p1.points + p2.points;
+    if(totalScore === 15) {
+      alert("you win");
+    }
   }
+
 
 /////////////create card data in random arrangement/////
 //////////////get json data////////////////
