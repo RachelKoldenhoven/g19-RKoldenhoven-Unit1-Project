@@ -81,7 +81,7 @@ $('#icon-choice').on('click', function() {
     state.player.score.text('Points: ' + state.player.points);
     var totalScore = p1.points + p2.points;
     if(totalScore === 15) {
-      alert("you win");
+      alert(state.player.name.val() + "  wins!");
     }
   }
 
@@ -101,7 +101,7 @@ $.getJSON("../genetics/vocab.json", function(data) {
   });
   var termsAndDefinitions = terms.concat(definitions);
 
-////////create six rows of five divs each and add a random item from the array to each new div
+////////create five rows of six divs each and add a random item from the array to each new div
 ////////append divs to DOM
   for (var i = 0; i < 5; i++) {
     cards.push([]);
