@@ -102,9 +102,15 @@ $.getJSON("../genetics/vocab.json", function(data) {
   var cardCount = 0;
   var lastCard;
   $('.container').on('click', function() {
+    //exit to prevent badness
+    if(cardCount >= 2) {
+      return;
+    }
     if($(this).hasClass("selected")) {
       return;
     }
+
+    //compares cards for match
     if(lastCard === undefined) {
       lastCard = $(this);
     } else if (lastCard.attr("data-id") === $(this).attr("data-id")) {
@@ -115,6 +121,7 @@ $.getJSON("../genetics/vocab.json", function(data) {
       lastCard = undefined;
     }
 
+    //turns cards back over
     $(this).addClass("selected");
     cardCount += 1;
       if(cardCount >=2) {
