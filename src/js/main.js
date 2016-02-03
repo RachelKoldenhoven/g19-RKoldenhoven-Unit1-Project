@@ -65,6 +65,7 @@ $('#icon-choice').on('click', function() {
 
   $('#startBtn').on('click', function() {
     setPlayer(p1);
+    startTheGame();
   });
 
 ///////////////change player///////////////
@@ -90,6 +91,7 @@ $('#icon-choice').on('click', function() {
 //////////////get json data////////////////
 
 var cards =[];
+function startTheGame() {
 /////get data from json file and return objects that have either the term,
 /////or the definition and picture.  Then concat them into one array.
 $.getJSON("../genetics/vocab.json", function(data) {
@@ -172,7 +174,7 @@ $.getJSON("../genetics/vocab.json", function(data) {
 });
 
 
-
+};
 
 
 

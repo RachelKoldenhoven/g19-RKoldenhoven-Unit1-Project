@@ -1,8 +1,8 @@
 {"genetics": [
   {"term": "trait", "definition": "a characteristic (like eye tongue rolling) that is controlled by genes", "image": "../../genetics/img/TongueRoll.jpg"},
   {"term": "offspring", "definition": "product of reproduction (in humans, offspring are children of parents)", "image": "../../genetics/img/offspring.jpg"},
-  {"term": "phenotype", "definition": "the appearance and observed traits of an organism", "image": "../../genetics/img/phenotype.gif"},
-  {"term": "genotype", "definition": "the genes of an organism", "image": "../../genetics/img/phenotype.gif"},
+  {"term": "phenotype", "definition": "the appearance and observed traits of an organism", "image": "../../genetics/img/phenotype.jpg"},
+  {"term": "genotype", "definition": "the genes of an organism", "image": "../../genetics/img/phenotype.jpg"},
   {"term": "punnett square", "definition": "diagram used to predict the genes that offspring could get from two parents", "image": "../../genetics/img/punnett.jpg"},
   {"term": "allele", "definition": "possible form of a gene", "image": "../../genetics/img/Allele.jpg"},
   {"term": "dominant allele", "definition": "the allele that is visible in an organism", "image": "../../genetics/img/dominant.jpg"},

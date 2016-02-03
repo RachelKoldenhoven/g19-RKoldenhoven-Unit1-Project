@@ -53,10 +53,7 @@
   padding-top: 10%;
 }
 
-img {
-  width: 175px;
-  height: auto;
-}
+
 
 .selected > .game-space {
   z-index: 1;
