@@ -13,7 +13,8 @@ $(document).on('ready', function() {
     input: $('.p1-input'),
     icon: $('#p1icon'),
     score: $('#p1Points'),
-    points: 0
+    points: 0,
+    status: "inactive"
   };
 
   var p2 = {
@@ -24,10 +25,11 @@ $(document).on('ready', function() {
     input: $('.p2-input'),
     icon: $('#p2icon'),
     score: $('#p2Points'),
-    points: 0
+    points: 0,
+    status: "inactive"
   };
 
-//////////////append player names//////////
+//////////////append and require player names//////////
 
 var state = {
   player: undefined
@@ -37,10 +39,16 @@ var init = function(player) {
 
   player.btn.on('click', function(e) {
     e.preventDefault();
+    if(player.name.val() === "") {
+      player.input.css('border','2px solid #b94a48', 'box-shadow','inset 0 3px 3px');
+      e.stopPropagation();
+      return;
+    }
     var playerName = player.name.val();
     player.panel.append(playerName);
     player.input.hide();
     state.player = player;
+    player.status = "active";
   });
 };
 
@@ -64,8 +72,10 @@ $('#icon-choice').on('click', function() {
 //////////////start the game//////////////
 
   $('#startBtn').on('click', function() {
-    setPlayer(p1);
-    startTheGame();
+    if(p1.status === "active" && p2.status === "active") {
+      setPlayer(p1);
+      startTheGame();
+    }
   });
 
 ///////////////change player///////////////
