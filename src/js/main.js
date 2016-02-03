@@ -82,7 +82,8 @@ $('#icon-choice').on('click', function() {
     state.player.score.text('Points: ' + state.player.points);
     var totalScore = p1.points + p2.points;
     if(totalScore === 15) {
-      alert(state.player.name.val() + "  wins!");
+      var winner = (p1.points > p2.points) ? p1.name.val() : p2.name.val()
+      alert(winner + "  wins!");
     }
   }
 
