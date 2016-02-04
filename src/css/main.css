@@ -50,8 +50,11 @@
 }
 
 .card-front img {
-  width: 100%;
+  width: 80%;
   padding-top: 10%;
+  height: 100%;
+  display: block;
+  margin: 0 auto;
 }
 
 
