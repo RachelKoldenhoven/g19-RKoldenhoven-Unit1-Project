@@ -1,6 +1,6 @@
 {
   "firebase": "vocabmemory",
-  "public": "src",
+  "public": "./src",
   "ignore": [
     "firebase.json",
     "**/.*",
